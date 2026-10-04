@@ -23,7 +23,7 @@ albedo_color = Color(0.93333334, 0.76862746, 0.65882355, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_1ls2o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbgqw"]
-albedo_color = Color(0.2901961, 0.18039216, 0.09411765, 1)
+albedo_color = Color(0.5411765, 0.3529412, 0.20784314, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3yr7u"]
 
@@ -38,7 +38,11 @@ albedo_color = Color(0.42584896, 0.09222681, 0.42351368, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_mbgqw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0aptg"]
-albedo_color = Color(0.2901961, 0.18039216, 0.09411765, 1)
+albedo_color = Color(0.5411765, 0.3529412, 0.20784314, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hair_back"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hair_side"]
 
 [node name="Main" type="Node3D" unique_id=1581844241]
 
@@ -78,9 +82,24 @@ transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.35, 0)
 mesh = SubResource("SphereMesh_3yr7u")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 
-[node name="Cabello" type="MeshInstance3D" parent="Sam" unique_id=1256281706]
-transform = Transform3D(0.48, 0, 0, 0, 0.22, 0, 0, 0, 0.42, 0, 1.55, -0.05)
+[node name="Cabello_Casco" type="MeshInstance3D" parent="Sam" unique_id=1256281706]
+transform = Transform3D(0.48, 0, 0, 0, 0.18, 0, 0, 0, 0.4, 0, 1.55, -0.03)
 mesh = SubResource("SphereMesh_1ls2o")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
+
+[node name="Cabello_Nuca" type="MeshInstance3D" parent="Sam"]
+transform = Transform3D(0.4, 0, 0, 0, 0.34, 0, 0, 0, 0.24, 0, 1.35, 0.18)
+mesh = SubResource("SphereMesh_hair_back")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
+
+[node name="Mechon_Izq" type="MeshInstance3D" parent="Sam"]
+transform = Transform3D(0.09781476, -0.062373504, 0, 0.02079117, 0.2934443, 0, 0, 0, 0.1, -0.3, 1.32, -0.03)
+mesh = SubResource("CapsuleMesh_hair_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
+
+[node name="Mechon_Der" type="MeshInstance3D" parent="Sam"]
+transform = Transform3D(0.09781476, 0.062373504, 0, -0.02079117, 0.2934443, 0, 0, 0, 0.1, 0.3, 1.32, -0.03)
+mesh = SubResource("CapsuleMesh_hair_side")
 surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
 
 [node name="Varita" type="MeshInstance3D" parent="Sam" unique_id=1809457674]
@@ -94,6 +113,6 @@ mesh = SubResource("BoxMesh_3yr7u")
 surface_material_override/0 = SubResource("StandardMaterial3D_treug")
 
 [node name="Flequillo" type="MeshInstance3D" parent="Sam" unique_id=2071816231]
-transform = Transform3D(0.38, 0, 0, 0, 0.12, 0, 0, 0, 0.18, 0, 1.42, -0.28)
+transform = Transform3D(0.36, 0, 0, 0, 0.1, 0, 0, 0, 0.16, 0, 1.43, -0.27)
 mesh = SubResource("SphereMesh_mbgqw")
-surface_material_override/0 = SubResource("StandardMaterial3D_0aptg")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
