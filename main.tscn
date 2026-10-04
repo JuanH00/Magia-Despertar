@@ -19,6 +19,16 @@ size = Vector3(20, 0.2, 20)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbgqw"]
 albedo_color = Color(0.31586727, 0.22023207, 0.032711968, 1)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_3yr7u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3ghm"]
+albedo_color = Color(0.43750015, 0.29023674, 4.813075e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3yr7u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_treug"]
+albedo_color = Color(0.42584896, 0.09222681, 0.42351368, 1)
+
 [node name="Main" type="Node3D" unique_id=1581844241]
 
 [node name="Suelo" type="MeshInstance3D" parent="." unique_id=1367559036]
@@ -59,3 +69,13 @@ mesh = SubResource("SphereMesh_3yr7u")
 transform = Transform3D(0.38, 0, 0, 0, 0.18, 0, 0, 0, 0.38, 0, 1.48, 0)
 mesh = SubResource("SphereMesh_1ls2o")
 surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
+
+[node name="Varita" type="MeshInstance3D" parent="Sam" unique_id=1809457674]
+transform = Transform3D(0.054378465, 0.23244005, 0, -0.025357096, 0.49846926, 0, 0, 0, 0.06, 0.45, 0.65, 0)
+mesh = SubResource("CylinderMesh_3yr7u")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3ghm")
+
+[node name="Libro" type="MeshInstance3D" parent="Sam" unique_id=529350142]
+transform = Transform3D(0.28, 0, 0, 0, 0.35, 0, 0, 0, 0.08, -0.42, 0.75, 0.05)
+mesh = SubResource("BoxMesh_3yr7u")
+surface_material_override/0 = SubResource("StandardMaterial3D_treug")
