@@ -12,6 +12,13 @@ size = Vector3(20, 0.2, 20)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3yr7u"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_3yr7u"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ls2o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbgqw"]
+albedo_color = Color(0.31586727, 0.22023207, 0.032711968, 1)
+
 [node name="Main" type="Node3D" unique_id=1581844241]
 
 [node name="Suelo" type="MeshInstance3D" parent="." unique_id=1367559036]
@@ -33,7 +40,7 @@ script = ExtResource("1_ig7tw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sam" unique_id=577808233]
 shape = SubResource("CapsuleShape3D_3yr7u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Sam" unique_id=613428148]
+[node name="Cuerpo" type="MeshInstance3D" parent="Sam" unique_id=613428148]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_3yr7u")
 
@@ -43,3 +50,12 @@ spring_length = 8.0
 
 [node name="Camera3D" type="Camera3D" parent="Sam/BrazoCamara" unique_id=1430735988]
 current = true
+
+[node name="Cabeza" type="MeshInstance3D" parent="Sam" unique_id=294812621]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 1.35, 0)
+mesh = SubResource("SphereMesh_3yr7u")
+
+[node name="Cabello" type="MeshInstance3D" parent="Sam" unique_id=1256281706]
+transform = Transform3D(0.38, 0, 0, 0, 0.18, 0, 0, 0, 0.38, 0, 1.48, 0)
+mesh = SubResource("SphereMesh_1ls2o")
+surface_material_override/0 = SubResource("StandardMaterial3D_mbgqw")
