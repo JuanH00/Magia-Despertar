@@ -1,9 +1,45 @@
 [gd_scene format=3 uid="uid://prj0iaoxkw11"]
 
+[ext_resource type="Script" uid="uid://dxreq8542vdb" path="res://sam.gd" id="1_ig7tw"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_26ent"]
 size = Vector3(20, 0.2, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3yr7u"]
+size = Vector3(20, 0.2, 20)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3yr7u"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3yr7u"]
 
 [node name="Main" type="Node3D" unique_id=1581844241]
 
 [node name="Suelo" type="MeshInstance3D" parent="." unique_id=1367559036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0054861307, -0.001467526, 0.003910601)
 mesh = SubResource("BoxMesh_26ent")
+
+[node name="SueloColision" type="StaticBody3D" parent="." unique_id=1899593751]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SueloColision" unique_id=1948173351]
+shape = SubResource("BoxShape3D_3yr7u")
+
+[node name="LuzSol" type="DirectionalLight3D" parent="." unique_id=969320913]
+transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="Sam" type="CharacterBody3D" parent="." unique_id=402682916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sam" unique_id=577808233]
+shape = SubResource("CapsuleShape3D_3yr7u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sam" unique_id=613428148]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_3yr7u")
+
+[node name="BrazoCamara" type="SpringArm3D" parent="Sam" unique_id=1839795760]
+transform = Transform3D(1, 0, 0, 0, 0.81915206, 0.57357645, 0, -0.57357645, 0.81915206, 0, 2, 0)
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="Sam/BrazoCamara" unique_id=1430735988]
+current = true
