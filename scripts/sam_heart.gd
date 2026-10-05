@@ -94,7 +94,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode >= KEY_1 and event.keycode <= KEY_6: _select(event.keycode - KEY_1)
 		elif event.keycode == KEY_Q: _cast()
-		elif event.keycode == KEY_ESCAPE: Input.mouse_mode = MOUSE_MODE_VISIBLE if Input.mouse_mode == MOUSE_MODE_CAPTURED else MOUSE_MODE_CAPTURED
+		elif event.keycode == KEY_ESCAPE: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 
 func _select(index: int) -> void:
 	selected_spell = clamp(index, 0, 5)
