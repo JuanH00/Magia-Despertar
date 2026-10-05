@@ -35,7 +35,7 @@ func _ready() -> void:
 	add_child(collider)
 	_build_visual()
 	_build_camera()
-	Input.mouse_mode = Input.Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	selection_changed.emit(0, NAMES[0])
 	resources_changed.emit(health, mana)
 
@@ -94,7 +94,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode >= KEY_1 and event.keycode <= KEY_6: _select(event.keycode - KEY_1)
 		elif event.keycode == KEY_Q: _cast()
-		elif event.keycode == KEY_ESCAPE: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
+		elif event.keycode == KEY_ESCAPE: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 
 func _select(index: int) -> void:
 	selected_spell = clamp(index, 0, 5)
@@ -214,7 +214,19 @@ func _arm(x: float, wand: bool) -> Node3D:
 		staff.add_child(wand_tip)
 	return root
 
-func _part(n: String, mesh: Mesh, pos: Vector3, material: Material, parent: Node3D = null, scale := Vector3.ONE) -> MeshInstance3D:
+func _part(n, mesh, pos, a, b = null, c = Vector3.ONE) -> MeshInstance3D:
+	var material: Material = null
+	var parent: Node3D = null
+	var scale := Vector3.ONE
+	if a is Material:
+		material = a
+		if b is Node3D: parent = b
+		if c is Vector3: scale = c
+	else:
+		scale = a
+		if b is Material: material = b
+		elif b is Node3D: parent = b
+		if c is Material: material = c
 	var item := MeshInstance3D.new()
 	item.name = n
 	item.mesh = mesh
