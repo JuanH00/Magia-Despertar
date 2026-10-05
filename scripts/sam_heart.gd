@@ -133,10 +133,10 @@ func _build_camera() -> void:
 	camera_yaw.global_position = global_position + Vector3.UP * 1.75
 	add_child(camera_yaw)
 	camera_pitch = Node3D.new()
-	camera_pitch.rotation.x = deg_to_rad(-12)
+	camera_pitch.rotation.x = deg_to_rad(-18)
 	camera_yaw.add_child(camera_pitch)
 	var boom := SpringArm3D.new()
-	boom.spring_length = 5.2
+	boom.spring_length = 7.0
 	boom.margin = 0.2
 	camera_pitch.add_child(boom)
 	camera = Camera3D.new()
@@ -227,6 +227,7 @@ func _part(n, mesh, pos, a, b = null, c = Vector3.ONE) -> MeshInstance3D:
 		if b is Material: material = b
 		elif b is Node3D: parent = b
 		if c is Material: material = c
+		elif c is Node3D: parent = c
 	var item := MeshInstance3D.new()
 	item.name = n
 	item.mesh = mesh
